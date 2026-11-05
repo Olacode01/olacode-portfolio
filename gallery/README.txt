@@ -1,0 +1,1 @@
+Put your event photos and certificates here, using the filenames shown on the Gallery tiles (e.g. speaking-gdg-london.jpg).
