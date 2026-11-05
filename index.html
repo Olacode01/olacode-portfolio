@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toheeb Olanrewaju Olagoke — Software &amp; AI/ML Engineer, Speaker, Community Builder</title>
+<meta name="description" content="Toheeb Olanrewaju Olagoke (Olacode) — Software &amp; AI Automation Engineer. Speaker, researcher, and community builder.">
+<script>
+  (function(){
+    try{
+      var saved = localStorage.getItem('theme');
+      var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }catch(e){}
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#f6f7f8;
+    --panel:#ffffff;
+    --border:#e7e9ec;
+    --text:#12141a;
+    --muted:#5b6472;
+    --muted-2:#969da6;
+    --accent:#4f46e5;
+    --accent-soft:rgba(79,70,229,0.08);
+    --accent-2:#12a463;
+    --serif:'Space Grotesk','Inter',sans-serif;
+    --sans:'Inter',sans-serif;
+    --shadow-sm:0 1px 2px rgba(16,24,40,0.04), 0 1px 3px rgba(16,24,40,0.06);
+    --shadow-md:0 8px 24px -8px rgba(16,24,40,0.12);
+    --header-bg:rgba(255,255,255,0.85);
+    --tabbar-bg:rgba(255,255,255,0.92);
+    --media-a:#f1f2f6;
+    --media-b:#e8eaf0;
+    --avatar-grad-a:#eef0ff;
+    --avatar-grad-b:#f7f7f8;
+  }
+  html[data-theme="dark"]{
+    --bg:#0b0d10;
+    --bg-soft:#14171c;
+    --panel:#14171c;
+    --border:rgba(255,255,255,0.1);
+    --text:#eef0f3;
+    --muted:#9aa3af;
+    --muted-2:#666f7a;
+    --accent:#7c76ff;
+    --accent-soft:rgba(124,118,255,0.16);
+    --accent-2:#22d98a;
+    --shadow-sm:0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md:0 10px 30px -10px rgba(0,0,0,0.55);
+    --header-bg:rgba(11,13,16,0.85);
+    --tabbar-bg:rgba(11,13,16,0.92);
+    --media-a:#1b1f27;
+    --media-b:#12151a;
+    --avatar-grad-a:#1e2430;
+    --avatar-grad-b:#12151a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    transition:background .25s ease, color .25s ease;
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--accent);color:#fff;}
+  img{max-width:100%;display:block;}
+
+  .bg-wash{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:radial-gradient(ellipse 900px 500px at 50% -10%, rgba(79,70,229,0.06), transparent 65%);
+  }
+  .scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:200;width:0%;transition:width .1s linear;}
+
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;position:relative;z-index:2;}
+  section{position:relative;z-index:2;}
+
+  .eyebrow{text-transform:uppercase;letter-spacing:0.14em;font-size:11.5px;color:var(--muted-2);font-weight:600;}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;left:0;right:0;z-index:100;
+    background:var(--header-bg);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);transition:background .25s, border-color .25s;
+  }
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px;}
+  .logo{font-family:var(--serif);font-weight:700;font-size:18px;}
+  .logo span{color:var(--accent);}
+  .nav-right{display:flex;align-items:center;gap:12px;}
+  .nav-cta{
+    background:var(--text);color:var(--bg);padding:9px 18px;border-radius:100px;font-size:13.5px;font-weight:600;
+    transition:all .2s;
+  }
+  .nav-cta:hover{background:var(--accent);color:#fff;}
+  .theme-toggle{
+    width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--panel);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .2s;flex-shrink:0;
+  }
+  .theme-toggle:hover{border-color:var(--accent);}
+  .theme-toggle .icon-sun{display:none;}
+  html[data-theme="dark"] .theme-toggle .icon-moon{display:none;}
+  html[data-theme="dark"] .theme-toggle .icon-sun{display:block;}
+
+  /* PROFILE HEADER */
+  .profile{padding:56px 0 0;}
+  .profile-header-row{display:flex;align-items:center;gap:30px;flex-wrap:wrap;text-align:left;}
+  .avatar-wrap{width:132px;height:132px;border-radius:50%;position:relative;flex-shrink:0;}
+  .avatar-wrap .photo{
+    width:100%;height:100%;border-radius:50%;overflow:hidden;border:1px solid var(--border);
+    box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(160deg,var(--avatar-grad-a),var(--avatar-grad-b));position:relative;
+  }
+  .avatar-wrap .photo .cartoon-avatar{position:absolute;inset:0;width:100%;height:100%;}
+  .avatar-wrap .photo img{position:relative;z-index:2;width:100%;height:100%;object-fit:cover;}
+  .avatar-wrap .status-dot{
+    position:absolute;bottom:6px;right:6px;width:20px;height:20px;border-radius:50%;background:var(--accent-2);
+    border:3px solid var(--bg);z-index:3;transition:border-color .25s;
+  }
+  .profile-info{flex:1;min-width:260px;}
+  h1.profile-name{font-family:var(--serif);font-weight:700;font-size:clamp(26px,3.6vw,36px);letter-spacing:-0.01em;}
+  .profile-tagline{font-size:16.5px;color:var(--muted);max-width:560px;margin-top:10px;font-weight:400;}
+  .profile-actions{display:flex;justify-content:flex-start;gap:12px;margin-top:22px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;padding:11px 22px;font-size:14px;
+    border-radius:100px;transition:all .2s;font-weight:600;
+  }
+  .btn-primary{background:var(--text);color:var(--bg);}
+  .btn-primary:hover{background:var(--accent);color:#fff;transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--border);color:var(--text);background:var(--panel);}
+  .btn-ghost:hover{border-color:var(--text);transform:translateY(-1px);}
+
+  .location-pill{
+    display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:7px 16px;
+    border:1px solid var(--border);border-radius:100px;font-size:13px;color:var(--muted);background:var(--bg-soft);
+  }
+
+  /* Stats row */
+  .stats-row{
+    display:flex;justify-content:flex-start;gap:0;margin-top:34px;padding:24px 0;border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);flex-wrap:wrap;
+  }
+  .stat-block{padding:0 32px;text-align:left;border-right:1px solid var(--border);}
+  .stat-block:first-child{padding-left:0;}
+  .stat-block:last-child{border-right:none;}
+  .stat-block .num{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--text);}
+  .stat-block .lbl{font-size:12px;color:var(--muted-2);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;}
+
+  /* Tab bar */
+  .tab-bar{
+    position:sticky;top:68px;z-index:90;background:var(--tabbar-bg);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);margin-top:0;transition:background .25s, border-color .25s;
+  }
+  .tab-list{display:flex;gap:8px;overflow-x:auto;padding:14px 0;list-style:none;justify-content:center;}
+  .tab-list a{
+    font-size:13.5px;font-weight:600;color:var(--muted);padding:8px 16px;border-radius:100px;white-space:nowrap;
+    transition:all .2s;
+  }
+  .tab-list a:hover{color:var(--text);background:var(--bg-soft);}
+  .tab-list a.active{color:var(--bg);background:var(--text);}
+
+  /* Section shell */
+  .section{padding:64px 0;}
+  .section-head{margin-bottom:32px;}
+  h2.section-title{font-family:var(--serif);font-weight:700;font-size:26px;margin-top:6px;}
+  .section-sub{color:var(--muted);font-size:14.5px;margin-top:8px;max-width:600px;}
+
+  /* About */
+  .about-copy p{color:var(--muted);font-size:15.5px;margin-bottom:18px;max-width:720px;}
+  .about-copy p strong{color:var(--text);font-weight:600;}
+
+  /* Pillars */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
+  .pillar{
+    background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 24px;box-shadow:var(--shadow-sm);
+    transition:box-shadow .2s, transform .2s;
+  }
+  .pillar:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+  .pillar .num{font-family:var(--serif);font-size:12px;color:var(--accent);font-weight:700;}
+  .pillar h3{font-family:var(--serif);font-size:18px;margin:14px 0 10px;font-weight:600;}
+  .pillar p{color:var(--muted);font-size:14px;margin-bottom:16px;}
+
+  .tag-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:5px 12px;border-radius:100px;background:var(--bg-soft);}
+
+  /* Post feed cards */
+  .post-feed{display:flex;flex-direction:column;gap:16px;}
+  .post{
+    background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow-sm);
+    transition:box-shadow .2s;
+  }
+  .post:hover{box-shadow:var(--shadow-md);}
+  .post-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+  .post-avatar{
+    width:36px;height:36px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;font-size:13px;flex-shrink:0;
+  }
+  .post-name{font-weight:600;font-size:13.5px;}
+  .post-date{color:var(--muted-2);font-size:13px;}
+  .post-role{
+    margin-left:auto;font-size:11.5px;font-weight:600;color:var(--accent);background:var(--accent-soft);
+    padding:5px 12px;border-radius:100px;white-space:nowrap;
+  }
+  .post-title{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:6px;line-height:1.35;}
+  .post-venue{color:var(--muted-2);font-size:12.5px;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;font-weight:600;}
+  .post-body{color:var(--muted);font-size:14.5px;margin-bottom:16px;max-width:680px;}
+  .post-tags{margin-bottom:16px;}
+  .post-media{
+    border-radius:10px;overflow:hidden;aspect-ratio:16/9;border:1px solid var(--border);cursor:pointer;
+    background:linear-gradient(150deg,var(--media-a),var(--media-b));position:relative;
+  }
+  .post-media img{width:100%;height:100%;object-fit:cover;position:relative;z-index:2;transition:transform .4s;}
+  .post-media:hover img{transform:scale(1.04);}
+  .media-placeholder{
+    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    color:var(--muted-2);font-size:12px;
+  }
+  .media-placeholder .icon{font-size:22px;}
+
+  /* Achievement grid (cards, not feed) */
+  .ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .ach{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:var(--shadow-sm);transition:box-shadow .2s, transform .2s;}
+  .ach:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);}
+  .ach .mark{color:var(--accent-2);font-size:18px;margin-bottom:10px;display:block;}
+  .ach h4{font-family:var(--serif);font-size:16px;font-weight:600;margin-bottom:8px;}
+  .ach p{color:var(--muted);font-size:13.5px;}
+
+  /* Gallery */
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .gallery-item{
+    position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;cursor:pointer;
+    border:1px solid var(--border);background:linear-gradient(150deg,var(--media-a),var(--media-b));
+  }
+  .gallery-item img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:2;transition:transform .4s;}
+  .gallery-item:hover img{transform:scale(1.06);}
+  .gallery-caption{
+    position:absolute;left:0;right:0;bottom:0;padding:12px 14px;z-index:3;
+    background:linear-gradient(0deg, rgba(0,0,0,0.55), transparent);
+    font-size:12px;color:#fff;opacity:0;transform:translateY(6px);transition:opacity .2s, transform .2s;
+  }
+  .gallery-item:hover .gallery-caption{opacity:1;transform:translateY(0);}
+  .gallery-caption .cap-cat{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:0.08em;opacity:0.85;margin-bottom:2px;}
+  .gallery-hint{margin-top:20px;font-size:13px;color:var(--muted-2);}
+
+  /* Lightbox */
+  .lightbox{
+    position:fixed;inset:0;z-index:300;background:rgba(10,12,15,0.72);backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;padding:40px;
+  }
+  .lightbox.open{opacity:1;pointer-events:auto;}
+  .lightbox-inner{max-width:760px;width:100%;}
+  .lightbox-frame{
+    width:100%;aspect-ratio:4/3;border-radius:12px;overflow:hidden;border:1px solid var(--border);
+    background:linear-gradient(150deg,var(--media-a),var(--media-b));display:flex;align-items:center;justify-content:center;position:relative;
+  }
+  .lightbox-frame img{width:100%;height:100%;object-fit:cover;position:relative;z-index:2;}
+  .lightbox-caption{margin-top:16px;font-size:14px;color:#fff;}
+  .lightbox-caption .cap-cat{display:block;color:var(--accent-2);text-transform:uppercase;letter-spacing:0.08em;font-size:11px;margin-bottom:6px;}
+  .lightbox-close{
+    position:absolute;top:-44px;right:0;background:var(--panel);border:1px solid var(--border);color:var(--text);
+    width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;transition:all .2s;
+  }
+  .lightbox-close:hover{background:var(--accent);color:#fff;}
+
+  /* Highlight reel */
+  .reel-wrap{padding-top:22px;}
+  .reel{position:relative;height:150px;border-radius:18px;overflow:hidden;color:#fff;box-shadow:var(--shadow-md);isolation:isolate;}
+  .reel-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 28px;opacity:0;transform:scale(1.04);transition:opacity .7s ease, transform 6s ease-out;pointer-events:none;overflow:hidden;}
+  .reel-slide.active{opacity:1;transform:scale(1);pointer-events:auto;}
+  .reel-slide::before,.reel-slide::after{content:'';position:absolute;border-radius:50%;filter:blur(40px);opacity:.55;z-index:-1;animation:reelDrift 9s ease-in-out infinite alternate;}
+  .reel-slide::before{width:260px;height:260px;left:-60px;top:-90px;background:var(--b1);}
+  .reel-slide::after{width:300px;height:300px;right:-40px;bottom:-140px;background:var(--b2);animation-delay:-4s;}
+  @keyframes reelDrift{to{transform:translate(70px,30px) scale(1.2);}}
+  .reel-slide.s1{background:linear-gradient(120deg,#4f46e5,#7c3aed);--b1:#22d3ee;--b2:#f0abfc;}
+  .reel-slide.s2{background:linear-gradient(120deg,#0f766e,#16a34a);--b1:#bef264;--b2:#22d3ee;}
+  .reel-slide.s3{background:linear-gradient(120deg,#be185d,#7c3aed);--b1:#fda4af;--b2:#6366f1;}
+  .reel-slide.s4{background:linear-gradient(120deg,#1d4ed8,#0ea5e9);--b1:#a5b4fc;--b2:#34d399;}
+  .reel-slide.s5{background:linear-gradient(120deg,#0b0f0d,#14281d);--b1:#39ff8c;--b2:#0ea5e9;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+  .reel-copy{max-width:600px;}
+  .reel-tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.18);padding:4px 10px;border-radius:100px;margin-bottom:8px;}
+  .reel-copy h3{font-family:var(--serif);font-size:clamp(17px,2.6vw,24px);line-height:1.25;margin-bottom:4px;}
+  .reel-copy p{font-size:13.5px;opacity:.88;}
+  .reel-cta{flex-shrink:0;background:#fff;color:#12141a;font:600 13.5px var(--sans);padding:10px 18px;border-radius:100px;border:0;cursor:pointer;transition:transform .2s;}
+  .reel-cta:hover{transform:translateY(-2px);}
+  .reel-dots{position:absolute;left:28px;bottom:10px;display:flex;gap:6px;z-index:3;}
+  .reel-dots button{width:7px;height:7px;border-radius:50%;border:0;background:rgba(255,255,255,.4);cursor:pointer;padding:0;transition:all .25s;}
+  .reel-dots button.on{width:20px;border-radius:6px;background:#fff;}
+  .reel-progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.15);z-index:3;}
+  .reel-progress i{display:block;height:100%;width:0;background:#fff;}
+  .reel-progress i.run{animation:reelBar var(--dur,5500ms) linear forwards;}
+  .reel.paused .reel-progress i{animation-play-state:paused;}
+  @keyframes reelBar{to{width:100%;}}
+  @media (max-width:560px){.reel{height:190px;}.reel-slide{flex-direction:column;align-items:flex-start;justify-content:center;padding:0 20px;}.reel-dots{left:20px;}}
+  @media (prefers-reduced-motion:reduce){.reel-slide::before,.reel-slide::after{animation:none;}.reel-slide{transition:opacity .3s;}}
+
+  /* News */
+  .news-card{margin-top:24px;border:1px solid var(--border);border-radius:14px;background:var(--panel);padding:16px 18px;box-shadow:var(--shadow-sm);}
+  .news-head{display:flex;align-items:center;gap:10px;font-size:13px;margin-bottom:10px;}
+  .news-head .live{color:#e11d48;font-size:11px;font-weight:700;letter-spacing:.08em;animation:pulse 2s ease-in-out infinite;}
+  .news-src{margin-left:auto;color:var(--muted-2);font-size:12px;}
+  .news-refresh{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);background:var(--bg-soft);color:var(--text);cursor:pointer;transition:transform .3s;}
+  .news-refresh:hover{transform:rotate(180deg);border-color:var(--accent);}
+  .news-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 22px;counter-reset:n;}
+  .news-list li{counter-increment:n;padding:8px 0;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:baseline;}
+  .news-list li::before{content:counter(n);font-family:var(--serif);font-weight:700;color:var(--accent);font-size:13px;min-width:14px;}
+  .news-list a{font-size:14px;font-weight:500;line-height:1.4;color:var(--text);}
+  .news-list a:hover{color:var(--accent);}
+  .news-list small{display:block;color:var(--muted-2);font-size:11.5px;font-weight:400;margin-top:1px;}
+  .news-skel{grid-column:1/-1;color:var(--muted-2);font-size:13px;}
+  .news-skel::before{display:none;}
+  .news-foot{margin-top:8px;font-size:11.5px;color:var(--muted-2);}
+  @media (max-width:700px){.news-list{grid-template-columns:1fr;}}
+  .avatar-wrap .photo img{cursor:pointer;}
+
+  /* Terminal */
+  .nav-term{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;font-weight:700;
+    border:1px solid var(--border);background:var(--panel);color:var(--text);padding:9px 14px;border-radius:100px;cursor:pointer;transition:all .2s;
+  }
+  .nav-term:hover{border-color:var(--accent);color:var(--accent);}
+  .term-fab{
+    position:fixed;right:20px;bottom:20px;z-index:150;display:flex;align-items:center;gap:8px;cursor:pointer;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;font-weight:700;
+    background:#0b0f0d;color:#39ff8c;border:1px solid rgba(57,255,140,.4);padding:11px 16px;border-radius:100px;
+    box-shadow:0 10px 30px -8px rgba(0,0,0,.5);transition:transform .2s, box-shadow .2s;
+  }
+  .term-fab:hover{transform:translateY(-2px);box-shadow:0 14px 34px -8px rgba(57,255,140,.35);}
+  .term-fab kbd{font-family:inherit;font-size:11px;opacity:.6;border:1px solid rgba(57,255,140,.35);border-radius:5px;padding:1px 6px;}
+  .term-overlay{
+    position:fixed;inset:0;z-index:400;background:rgba(5,7,6,.72);backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s;
+  }
+  .term-overlay.open{opacity:1;pointer-events:auto;}
+  .term-win{
+    width:100%;max-width:780px;height:min(620px,82vh);background:#0b0f0d;border:1px solid rgba(57,255,140,.25);
+    border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#d7f5e3;font-size:13.5px;line-height:1.6;
+    transform:translateY(10px) scale(.985);transition:transform .2s;
+  }
+  .term-overlay.open .term-win{transform:none;}
+  .term-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:#101713;border-bottom:1px solid rgba(57,255,140,.15);}
+  .term-bar i{width:11px;height:11px;border-radius:50%;display:block;cursor:pointer;}
+  .term-bar i:nth-child(1){background:#ff5f57;}.term-bar i:nth-child(2){background:#febc2e;}.term-bar i:nth-child(3){background:#28c840;}
+  .term-bar span{margin-left:8px;font-size:12px;color:#7d9487;}
+  .term-body{flex:1;overflow-y:auto;padding:16px 18px;}
+  .term-line{white-space:pre-wrap;word-break:break-word;margin:0 0 2px;}
+  .term-line.cmd .p{color:#39ff8c;}
+  .term-line .g{color:#39ff8c;}.term-line .m{color:#ff3ea6;}.term-line .d{color:#7d9487;}.term-line .y{color:#ffd166;}
+  .term-line a{color:#7cc4ff;text-decoration:underline;cursor:pointer;}
+  .term-line .run{color:#39ff8c;cursor:pointer;border-bottom:1px dashed rgba(57,255,140,.5);}
+  .term-input-row{display:flex;align-items:center;gap:8px;padding:12px 18px;border-top:1px solid rgba(57,255,140,.15);background:#0d1310;}
+  .term-input-row .p{color:#39ff8c;white-space:nowrap;}
+  .term-input-row input{flex:1;background:none;border:0;outline:0;color:#eafff2;font:inherit;caret-color:#39ff8c;min-width:0;}
+  .term-chips{display:flex;gap:6px;flex-wrap:wrap;padding:0 18px 12px;background:#0d1310;}
+  .term-chips button{font:inherit;font-size:12px;color:#39ff8c;background:transparent;border:1px solid rgba(57,255,140,.3);border-radius:100px;padding:3px 10px;cursor:pointer;}
+  .term-chips button:hover{background:rgba(57,255,140,.12);}
+
+  /* Filter chips */
+  .filter-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+  .chip{
+    font-family:var(--sans);font-size:13px;font-weight:600;color:var(--muted);background:var(--panel);
+    border:1px solid var(--border);padding:7px 14px;border-radius:100px;cursor:pointer;transition:all .2s;
+  }
+  .chip span{color:var(--muted-2);font-weight:500;margin-left:4px;}
+  .chip:hover{border-color:var(--text);color:var(--text);}
+  .chip.active{background:var(--text);color:var(--bg);border-color:var(--text);}
+  .chip.active span{color:var(--bg);opacity:.7;}
+  .post.hide{display:none;}
+
+  /* Marquee */
+  .marquee{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;margin-top:20px;}
+  .marquee-track{display:flex;gap:40px;width:max-content;animation:marquee 28s linear infinite;}
+  .marquee-track span{font-family:var(--serif);font-size:clamp(28px,5vw,44px);font-weight:700;letter-spacing:-0.01em;white-space:nowrap;color:var(--text);}
+  .marquee-track span.star{color:var(--accent);}
+  @keyframes marquee{to{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion:reduce){.marquee-track{animation:none;}}
+
+  /* Header CV button */
+  .nav-cv{
+    border:1px solid var(--border);padding:9px 16px;border-radius:100px;font-size:13.5px;font-weight:600;
+    background:var(--panel);transition:all .2s;
+  }
+  .nav-cv:hover{border-color:var(--text);}
+  @media (max-width:560px){.nav-cv{display:none;}.logo{font-size:15px;}}
+
+  /* Podcast */
+  .podcast-card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:30px;box-shadow:var(--shadow-sm);display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start;}
+  .podcast-art{width:88px;height:88px;border-radius:14px;overflow:hidden;flex-shrink:0;box-shadow:var(--shadow-sm);background:linear-gradient(150deg,var(--media-a),var(--media-b));display:flex;align-items:center;justify-content:center;font-size:26px;position:relative;}
+  .podcast-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .podcast-info{flex:1;min-width:240px;}
+  .podcast-title{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:6px;}
+  .podcast-meta{color:var(--muted-2);font-size:12.5px;margin-bottom:12px;text-transform:uppercase;letter-spacing:0.06em;font-weight:600;}
+  .podcast-desc{color:var(--muted);font-size:14.5px;margin-bottom:20px;max-width:660px;}
+  .podcast-actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .episode-list{margin-top:26px;display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .episode-row{background:var(--panel);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;transition:background .2s;}
+  .episode-row:hover{background:var(--bg-soft);}
+  .episode-title{font-size:14px;font-weight:600;}
+  .episode-desc{color:var(--muted);font-size:13px;margin-top:4px;max-width:540px;}
+  .episode-meta{color:var(--muted-2);font-size:12.5px;white-space:nowrap;}
+
+  /* Writing */
+  .write-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;}
+  .write-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:26px;box-shadow:var(--shadow-sm);transition:box-shadow .2s, transform .2s;}
+  .write-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+  .write-platform{display:inline-block;margin-bottom:14px;font-weight:600;}
+  .write-hook{font-family:var(--serif);font-size:18.5px;font-weight:600;line-height:1.42;margin-bottom:10px;}
+  .write-teaser{color:var(--muted);font-size:14px;margin-bottom:18px;}
+  .write-hint{margin-top:20px;font-size:13px;color:var(--muted-2);}
+
+  /* Projects */
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;}
+  .proj{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:26px;box-shadow:var(--shadow-sm);transition:box-shadow .2s, transform .2s;}
+  .proj:hover{box-shadow:var(--shadow-md);transform:translateY(-3px);}
+  .proj .cat{font-size:11.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted-2);font-weight:600;}
+  .proj h4{font-family:var(--serif);font-size:18px;font-weight:600;margin:12px 0 8px;}
+  .proj p{color:var(--muted);font-size:13.5px;margin-bottom:18px;min-height:40px;}
+  .proj .tag-row{margin-bottom:18px;}
+  .proj-link{font-size:13px;color:var(--accent);font-weight:600;display:inline-flex;align-items:center;gap:6px;}
+  .proj-link:hover{gap:9px;transition:gap .2s;}
+
+  /* Skills */
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .skill-cat{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow-sm);}
+  .skill-cat .eyebrow{margin-bottom:14px;display:block;}
+  .skill-list li{list-style:none;padding:11px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text);
+    display:flex;justify-content:space-between;font-weight:500;}
+  .skill-list li:last-child{border-bottom:none;}
+  .skill-list li span{color:var(--muted-2);font-size:12px;font-weight:400;}
+
+  /* Contact / Footer */
+  .contact-section{padding:70px 0 50px;text-align:center;}
+  .contact-title{font-family:var(--serif);font-weight:700;font-size:clamp(26px,4vw,36px);margin:12px auto 26px;max-width:560px;}
+  .contact-title .accent-word{color:var(--accent);}
+  .contact-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+  footer{border-top:1px solid var(--border);padding:28px 0;}
+  .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+  .socials{display:flex;gap:22px;}
+  .socials a{font-size:13px;color:var(--muted);font-weight:500;transition:color .2s;}
+  .socials a:hover{color:var(--accent);}
+  .foot-note{font-size:12.5px;color:var(--muted-2);}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (max-width:820px){
+    .pillars{grid-template-columns:1fr;}
+    .ach-grid{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .stat-block{padding:0 18px;}
+    .stat-block:first-child{padding-left:0;}
+    .post-head{flex-wrap:wrap;}
+    .profile-header-row{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-wash"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">Toheeb Olanrewaju Olagoke</div>
+    <div class="nav-right">
+      <button class="nav-term" id="openTermNav" aria-label="Open terminal">&gt;_</button>
+      <a class="nav-cv" href="Olacode_CV.pdf" download="Toheeb_Olagoke_CV.pdf">Download CV ↓</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="icon-moon">🌙</span><span class="icon-sun">☀️</span>
+      </button>
+      <a class="nav-cta" href="#contact">Let's talk</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!--
+    HIGHLIGHT REEL / PROMO SPACE
+    To add a slide: copy one <div class="reel-slide"> block below and edit the tag, title, text and button link.
+    To make a slide expire automatically (ads, events), add data-until="2026-12-31" (and optionally data-from="2026-11-20").
+    To remove a slide: delete its block. Colours are assigned automatically.
+  -->
+  <div class="wrap reel-wrap">
+    <div class="reel" id="reel" aria-roledescription="carousel" aria-label="Highlights">
+      <div class="reel-slide s1 active">
+        <div class="reel-copy"><span class="reel-tag">🎙 Podcast</span><h3>CTRL + Chat is live on Spotify</h3><p>Tech conversations with the brightest minds. Want to be a guest?</p></div>
+        <a class="reel-cta" href="https://open.spotify.com/show/6BQDE43eL2KgJ1a6y0eXIb" target="_blank" rel="noopener">Listen ↗</a>
+      </div>
+      <div class="reel-slide s2" data-until="2026-12-15">
+        <div class="reel-copy"><span class="reel-tag">📍 Just wrapped</span><h3>Hacktoberfest 2026 — Hatfield &amp; Luton</h3><p>Two community events celebrating open source.</p></div>
+        <a class="reel-cta" href="#speaking">See events</a>
+      </div>
+      <div class="reel-slide s3">
+        <div class="reel-copy"><span class="reel-tag">⚡ Built in 24 hours</span><h3>VeraMove, the AI voice agent that negotiates for you</h3><p>Hack-Nation Global AI Hackathon with MIT Sloan AI Club.</p></div>
+        <a class="reel-cta" href="#projects">View project</a>
+      </div>
+      <div class="reel-slide s4">
+        <div class="reel-copy"><span class="reel-tag">💼 Open to roles</span><h3>Software &amp; AI Automation Engineer</h3><p>Agents, cloud automation and developer communities.</p></div>
+        <a class="reel-cta" href="Olacode_CV.pdf" download="Toheeb_Olagoke_CV.pdf">Download CV ↓</a>
+      </div>
+      <div class="reel-slide s5">
+        <div class="reel-copy"><span class="reel-tag">&gt;_ Easter egg</span><h3>Press Ctrl + K to open the terminal</h3><p>Type help, then try sudo hire olacode.</p></div>
+        <button class="reel-cta" id="reelTerm" type="button">Open terminal</button>
+      </div>
+      <div class="reel-dots" id="reelDots"></div>
+      <div class="reel-progress"><i id="reelBar"></i></div>
+    </div>
+  </div>
+
+  <!-- PROFILE HEADER -->
+  <section class="profile wrap">
+    <div class="profile-header-row">
+      <div class="avatar-wrap">
+        <div class="photo">
+          <svg class="cartoon-avatar" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustrated avatar of Toheeb">
+            <defs>
+              <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#eef0ff"/>
+                <stop offset="100%" stop-color="#dde2ff"/>
+              </linearGradient>
+            </defs>
+            <circle cx="100" cy="100" r="100" fill="url(#bgGrad)"/>
+            <path d="M28 202 Q28 138 100 136 Q172 138 172 202 Z" fill="#25407f"/>
+            <path d="M84 138 L100 168 L116 138 Z" fill="#ffffff"/>
+            <path d="M84 138 L66 178 L94 170 Z" fill="#1a2c56"/>
+            <path d="M116 138 L134 178 L106 170 Z" fill="#1a2c56"/>
+            <rect x="87" y="112" width="26" height="32" rx="11" fill="#8a5a3f"/>
+            <ellipse cx="100" cy="88" rx="39" ry="43" fill="#9c6a4a"/>
+            <ellipse cx="58" cy="90" rx="6.5" ry="9.5" fill="#9c6a4a"/>
+            <ellipse cx="142" cy="90" rx="6.5" ry="9.5" fill="#9c6a4a"/>
+            <path d="M58 76 Q58 36 100 36 Q142 36 142 76 Q142 56 100 54 Q58 56 58 76Z" fill="#15110f"/>
+            <path d="M60 58 Q100 30 140 58 Q142 46 100 42 Q58 46 60 58Z" fill="#15110f"/>
+            <rect x="76" y="78" width="15" height="3.4" rx="1.7" fill="#15110f"/>
+            <rect x="109" y="78" width="15" height="3.4" rx="1.7" fill="#15110f"/>
+            <ellipse cx="84" cy="90" rx="4.6" ry="5.8" fill="#1a1a1a"/>
+            <ellipse cx="116" cy="90" rx="4.6" ry="5.8" fill="#1a1a1a"/>
+            <path d="M100 92 L96 110 Q100 114 104 110 Z" fill="#7d4f36"/>
+            <path d="M83 118 Q100 131 117 118" stroke="#3a2216" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+          <img id="heroAvatar" src="avatars/avatar-1.jpg" alt="Illustrated portrait of Toheeb Olanrewaju Olagoke" title="Click to change my look" onerror="this.onerror=null;this.style.display='none';">
+        </div>
+        <div class="status-dot" title="Open to work"></div>
+      </div>
+      <div class="profile-info">
+        <h1 class="profile-name">Olacode</h1>
+        <p class="profile-tagline">Software &amp; AI Automation Engineer. I build AI agents and cloud automation, speak at tech events, and run developer communities.</p>
+        <div class="profile-actions">
+          <a class="btn btn-primary" href="mailto:olagoketoheeb94@gmail.com">Email me</a>
+          <a class="btn btn-ghost" href="Olacode_CV.pdf" download="Toheeb_Olagoke_CV.pdf">Download CV ↓</a>
+          <a class="btn btn-ghost" href="https://wa.me/447827929230" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/toheeb-olagoke/" target="_blank" rel="noopener">Follow on LinkedIn</a>
+          <a class="btn btn-ghost" href="https://github.com/Olacode01" target="_blank" rel="noopener">View GitHub</a>
+        </div>
+        <div class="location-pill">📍 England, UK</div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-block"><div class="num">6+</div><div class="lbl">Talks &amp; Hacks</div></div>
+      <div class="stat-block"><div class="num">3</div><div class="lbl">Internships</div></div>
+      <div class="stat-block"><div class="num">2</div><div class="lbl">Communities Founded</div></div>
+      <div class="stat-block"><div class="num">2026</div><div class="lbl">Aspire Leaders Grad</div></div>
+    </div>
+
+    <div class="news-card" id="news">
+      <div class="news-head">
+        <span class="live">● LIVE</span><b>Tech headlines</b><span class="news-src" id="newsSrc">loading…</span>
+        <button class="news-refresh" id="newsRefresh" type="button" aria-label="Show more headlines" title="More headlines">↻</button>
+      </div>
+      <ol class="news-list" id="newsList"><li class="news-skel">Fetching today's headlines…</li></ol>
+      <div class="news-foot">Headlines open the original article in a new tab.</div>
+    </div>
+  </section>
+
+  <!-- TAB BAR -->
+  <div class="tab-bar">
+    <ul class="tab-list wrap" style="max-width:960px;">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Focus</a></li>
+      <li><a href="#speaking">Speaking</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#podcast">Podcast</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ABOUT -->
+    <section class="section reveal" id="about">
+      <div class="section-head">
+        <div class="eyebrow">About</div>
+        <h2 class="section-title">The short version</h2>
+      </div>
+      <div class="about-copy">
+        <p>I'm a technology-driven problem solver building scalable, secure, and automated systems — and increasingly, <strong>AI agents that actually get things done</strong>. As founder of <strong>OLATECH Solutions</strong>, I work across cloud-native infrastructure, DevOps and security; as an AI intern at <strong>Decode Lab</strong> and a Python developer intern at <strong>Redynox</strong>, I've been getting my hands dirty in applied AI and production code.</p>
+        <p>I'm also a <strong>researcher and speaker</strong> — from presenting postgraduate research on AI adoption among early-stage entrepreneurs at the Hertfordshire Business School Symposium, to speaking on AI agents and agentic frameworks at Acadademy's Tech Cohort, to building an AI voice-negotiation agent (VeraMove) at a 5,500-applicant global hackathon with Hack-Nation and MIT Sloan.</p>
+        <p>Community is where it all connects: I co-founded <strong>Xtructure</strong>, a developer community for connecting builders and creating opportunity through tech, I'm a 2026 Ambassador for <strong>Thinking About Thinking</strong> (responsible AI discourse), a Student Representative at the University of Hertfordshire, and an Aspire Leaders Program graduate — always looking for the next room worth showing up in.</p>
+      </div>
+    </section>
+
+    <!-- FOCUS PILLARS -->
+    <section class="section reveal" id="work">
+      <div class="section-head">
+        <div class="eyebrow">What I do</div>
+        <h2 class="section-title">Where I focus</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="num">01</div>
+          <h3>Software &amp; Cloud Engineering</h3>
+          <p>Designing and automating scalable, secure infrastructure — CI/CD, cloud-native deployments and DevOps culture, end to end.</p>
+          <div class="tag-row"><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">AWS</span><span class="tag">Terraform</span></div>
+        </div>
+        <div class="pillar">
+          <div class="num">02</div>
+          <h3>AI / ML &amp; Research</h3>
+          <p>Building agentic systems and voice AI in hackathons, interning as an AI engineer, and researching how AI adoption reshapes opportunity for early-stage founders.</p>
+          <div class="tag-row"><span class="tag">Agentic AI</span><span class="tag">LLMs</span><span class="tag">Voice Agents</span><span class="tag">Research</span></div>
+        </div>
+        <div class="pillar">
+          <div class="num">03</div>
+          <h3>Speaking &amp; Community</h3>
+          <p>Speaking at and building developer communities — co-founding Xtructure, and showing up from student hackathons to global roadshows like Google I/O Extended.</p>
+          <div class="tag-row"><span class="tag">Public Speaking</span><span class="tag">Mentorship</span><span class="tag">Community Building</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPEAKING (post feed) -->
+    <section class="section reveal" id="speaking">
+      <div class="section-head">
+        <div class="eyebrow">Posts · On stage</div>
+        <h2 class="section-title">Speaking &amp; Events</h2>
+        <p class="section-sub">A running feed of talks, workshops and events — updated every time I show up somewhere new.</p>
+      </div>
+      <div class="filter-row" id="speakingFilters" role="tablist" aria-label="Filter events"></div>
+      <div class="post-feed" id="speakingFeed">
+
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">TO</div>
+            <span class="post-name">Toheeb Olagoke</span><span class="post-date">· Oct 2026</span>
+            <span class="post-role">Community</span>
+          </div>
+          <h3 class="post-title">Hacktoberfest 2026 — Hatfield</h3>
+          <div class="post-venue">Hacktoberfest · Hatfield, England</div>
+          <p class="post-body">Wrapped up a Hacktoberfest community event in Hatfield, celebrating open source with local developers and students.</p>
+          <div class="post-tags tag-row"><span class="tag">Hacktoberfest</span><span class="tag">Open Source</span><span class="tag">Community</span></div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">TO</div>
+            <span class="post-name">Toheeb Olagoke</span><span class="post-date">· Oct 2026</span>
+            <span class="post-role">Community</span>
+          </div>
+          <h3 class="post-title">Hacktoberfest 2026 — Luton</h3>
+          <div class="post-venue">Hacktoberfest · Luton, England</div>
+          <p class="post-body">Completed a Hacktoberfest community event in Luton, bringing builders together around open source contributions.</p>
+          <div class="post-tags tag-row"><span class="tag">Hacktoberfest</span><span class="tag">Open Source</span><span class="tag">Community</span></div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">TO</div>
+            <span class="post-name">Toheeb Olagoke</span><span class="post-date">· May 2026</span>
+            <span class="post-role">Speaker</span>
+          </div>
+          <h3 class="post-title">AI Agents &amp; Agentic Frameworks — "ChatGPT talks. Agents act."</h3>
+          <div class="post-venue">Acadademy — May 2026 Tech Cohort Edition</div>
+          <p class="post-body">Closed out a 4-week "Lead Better in the Era of AI" cohort teaching the shift from conversational AI to AI agents that plan, call tools and finish tasks — alongside speakers Aisosa Omere, Fidel Imasuen and Flourish Oduneye.</p>
+          <div class="post-tags tag-row"><span class="tag">AI Agents</span><span class="tag">Agentic Frameworks</span><span class="tag">Acadademy</span></div>
+          <div class="post-media" data-img="gallery/speaking-acadademy.jpg" data-cat="Speaking" data-title="Acadademy — May 2026 Tech Cohort">
+            <div class="media-placeholder"><span class="icon">📷</span><span>speaking-acadademy.jpg</span></div>
+            <img src="gallery/speaking-acadademy.jpg" alt="Speaking at Acadademy Tech Cohort" onerror="this.onerror=null;this.style.display='none';">
+          </div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">TO</div>
+            <span class="post-name">Toheeb Olagoke</span><span class="post-date">· 2026</span>
+            <span class="post-role">Speaker</span>
+          </div>
+          <h3 class="post-title">"The Role of AI in Empowering Early-Stage Entrepreneurs: Opportunities &amp; Challenges"</h3>
+          <div class="post-venue">Hertfordshire Business School — Postgraduate Research Symposium</div>
+          <p class="post-body">Presented original research on AI adoption among SMEs, including the OECD 2025 finding that 50% of SMEs cite lack of digital skills as the top barrier to AI adoption.</p>
+          <div class="post-tags tag-row"><span class="tag">Applied AI</span><span class="tag">Research</span><span class="tag">Entrepreneurship</span></div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">TO</div>
+            <span class="post-name">Toheeb Olagoke</span><span class="post-date">· 2026</span>
+            <span class="post-role">Speaker &amp; Session Lead</span>
+          </div>
+          <h3 class="post-title">"From Beginner to Builder: What Actually Matters"</h3>
+          <div class="post-venue">Build with AI × Hack Day — University of Hertfordshire</div>
+          <p class="post-body">Spoke and then led a hands-on session, walking students through building with AI in real time during a 5-hour mini-hackathon.</p>
+          <div class="post-tags tag-row"><span class="tag">Build with AI</span><span class="tag">Hackathon</span><span class="tag">Mentorship</span></div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">TO</div>
+            <span class="post-name">Toheeb Olagoke</span><span class="post-date">· 2026</span>
+            <span class="post-role">Volunteer</span>
+          </div>
+          <h3 class="post-title">Build with AI &amp; International Women's Day</h3>
+          <div class="post-venue">Google Road Show — Imperial College London</div>
+          <p class="post-body">Volunteered and helped run hands-on hackathon and codelab sessions exploring Gemini and modern AI tooling with the developer community.</p>
+          <div class="post-tags tag-row"><span class="tag">Gemini</span><span class="tag">Community</span><span class="tag">Imperial College</span></div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">TO</div>
+            <span class="post-name">Toheeb Olagoke</span><span class="post-date">· 2026</span>
+            <span class="post-role">Community</span>
+          </div>
+          <h3 class="post-title">Google I/O Extended 2026</h3>
+          <div class="post-venue">GDG London</div>
+          <p class="post-body">A full day on agents, memory, multi-agent systems, on-device AI and Flutter — connecting with speakers and the wider GDG London community.</p>
+          <div class="post-tags tag-row"><span class="tag">Agentic AI</span><span class="tag">Flutter</span><span class="tag">GDG London</span></div>
+          <div class="post-media" data-img="gallery/speaking-gdg-london.jpg" data-cat="Community" data-title="GDG London — I/O Extended 2026">
+            <div class="media-placeholder"><span class="icon">📷</span><span>speaking-gdg-london.jpg</span></div>
+            <img src="gallery/speaking-gdg-london.jpg" alt="GDG London I/O Extended" onerror="this.onerror=null;this.style.display='none';">
+          </div>
+        </article>
+
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">TO</div>
+            <span class="post-name">Toheeb Olagoke</span><span class="post-date">· 2026</span>
+            <span class="post-role">Upcoming</span>
+          </div>
+          <h3 class="post-title">London Tech Week 2026</h3>
+          <div class="post-venue">London — #LTW26</div>
+          <p class="post-body">Attending to connect with founders, investors and technology leaders and explore what's next in AI, startups and digital innovation.</p>
+          <div class="post-tags tag-row"><span class="tag">#LTW26</span><span class="tag">Networking</span></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section reveal" id="gallery">
+      <div class="section-head">
+        <div class="eyebrow">On location</div>
+        <h2 class="section-title">Gallery</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-cat="Speaking" data-title="GDG London — Google I/O Extended 2026" data-img="gallery/speaking-gdg-london.jpg">
+          <div class="media-placeholder"><span class="icon">📷</span><span>speaking-gdg-london.jpg</span></div>
+          <img src="gallery/speaking-gdg-london.jpg" alt="Speaking at GDG London" onerror="this.onerror=null;this.style.display='none';">
+          <div class="gallery-caption"><span class="cap-cat">Speaking</span>GDG London — I/O Extended 2026</div>
+        </div>
+        <div class="gallery-item" data-cat="Speaking" data-title="Acadademy — May 2026 Tech Cohort" data-img="gallery/speaking-acadademy.jpg">
+          <div class="media-placeholder"><span class="icon">📷</span><span>speaking-acadademy.jpg</span></div>
+          <img src="gallery/speaking-acadademy.jpg" alt="Speaking at Acadademy Tech Cohort" onerror="this.onerror=null;this.style.display='none';">
+          <div class="gallery-caption"><span class="cap-cat">Speaking</span>Acadademy — Tech Cohort Edition</div>
+        </div>
+        <div class="gallery-item" data-cat="Certificate" data-title="Aspire Leaders Program" data-img="gallery/certificate-aspire.jpg">
+          <div class="media-placeholder"><span class="icon">🎓</span><span>certificate-aspire.jpg</span></div>
+          <img src="gallery/certificate-aspire.jpg" alt="Aspire Leaders Program certificate" onerror="this.onerror=null;this.style.display='none';">
+          <div class="gallery-caption"><span class="cap-cat">Certificate</span>Aspire Leaders Program</div>
+        </div>
+        <div class="gallery-item" data-cat="Hackathon" data-title="VeraMove — Hack-Nation Global AI Hackathon" data-img="gallery/hackathon-veramove.jpg">
+          <div class="media-placeholder"><span class="icon">🏆</span><span>hackathon-veramove.jpg</span></div>
+          <img src="gallery/hackathon-veramove.jpg" alt="VeraMove hackathon team" onerror="this.onerror=null;this.style.display='none';">
+          <div class="gallery-caption"><span class="cap-cat">Hackathon</span>VeraMove — Hack-Nation Global AI Hackathon</div>
+        </div>
+        <div class="gallery-item" data-cat="Community" data-title="Xtructure — Welcome Meetup" data-img="gallery/xtructure-meetup.jpg">
+          <div class="media-placeholder"><span class="icon">👥</span><span>xtructure-meetup.jpg</span></div>
+          <img src="gallery/xtructure-meetup.jpg" alt="Xtructure welcome meetup" onerror="this.onerror=null;this.style.display='none';">
+          <div class="gallery-caption"><span class="cap-cat">Community</span>Xtructure — First Welcome Meetup</div>
+        </div>
+        <div class="gallery-item" data-cat="Ambassador" data-title="Thinking About Thinking — 2026 Ambassador" data-img="gallery/ambassador-tat.jpg">
+          <div class="media-placeholder"><span class="icon">🎓</span><span>ambassador-tat.jpg</span></div>
+          <img src="gallery/ambassador-tat.jpg" alt="Thinking About Thinking ambassador badge" onerror="this.onerror=null;this.style.display='none';">
+          <div class="gallery-caption"><span class="cap-cat">Ambassador</span>Thinking About Thinking — 2026</div>
+        </div>
+      </div>
+      <p class="gallery-hint">Placeholders — drop your own photos into a <code>gallery/</code> folder next to this file, using the filenames shown above, and they'll appear automatically here and in the posts above.</p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section reveal" id="experience">
+      <div class="section-head">
+        <div class="eyebrow">Hands-on</div>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <div class="post-feed">
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">D</div>
+            <span class="post-name">Decode Lab</span><span class="post-date">· 2026</span>
+            <span class="post-role">AI Engineering</span>
+          </div>
+          <h3 class="post-title">AI Intern</h3>
+          <div class="post-venue">Decode Lab</div>
+          <p class="post-body">Working on hands-on AI projects, learning from mentors and gaining real-world experience across the AI product lifecycle.</p>
+        </article>
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">R</div>
+            <span class="post-name">Redynox</span><span class="post-date">· 2026</span>
+            <span class="post-role">Software Engineering</span>
+          </div>
+          <h3 class="post-title">Python Developer Intern</h3>
+          <div class="post-venue">Redynox — 4 weeks, under Amit Sharma</div>
+          <p class="post-body">Went deeper than syntax — debugging as the job (not an interruption to it), documentation as part of the work, and Git as a record of how you think. Closed out with a Letter of Recommendation.</p>
+        </article>
+        <article class="post">
+          <div class="post-head">
+            <div class="post-avatar">O</div>
+            <span class="post-name">OLATECH Solutions</span><span class="post-date">· 2026 — Present</span>
+            <span class="post-role">Founder</span>
+          </div>
+          <h3 class="post-title">Founder</h3>
+          <div class="post-venue">OLATECH Solutions</div>
+          <p class="post-body">Building cloud-native, DevOps and cybersecurity solutions that help startups and enterprises thrive in the digital space.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section class="section reveal" id="leadership">
+      <div class="section-head">
+        <div class="eyebrow">Growth</div>
+        <h2 class="section-title">Leadership &amp; Achievements</h2>
+      </div>
+      <div class="ach-grid">
+        <div class="ach">
+          <span class="mark">✦</span>
+          <h4>Co-Founder, Xtructure</h4>
+          <p>Co-founded a developer community focused on connecting developers, building futures, and creating opportunity through tech. Launched with a "State of Dev in 2026" founders panel and open Q&amp;A.</p>
+        </div>
+        <div class="ach">
+          <span class="mark">✦</span>
+          <h4>2026 Ambassador — Thinking About Thinking</h4>
+          <p>Supporting thoughtful, responsible discussion around AI throughout 2026, including the AE Global Summit on Open Problems for AI in London (25–27 Nov).</p>
+        </div>
+        <div class="ach">
+          <span class="mark">✦</span>
+          <h4>Aspire Leaders Program Graduate</h4>
+          <p>Completed the Aspire Institute's global leadership program, sharpening critical thinking, leadership and communication alongside changemakers worldwide. Now exploring the Extended Leadership Pathways.</p>
+        </div>
+        <div class="ach">
+          <span class="mark">✦</span>
+          <h4>Student Representative, School of Business</h4>
+          <p>Selected to represent students at the University of Hertfordshire for 2025–2026 — gathering feedback and working with lecturers to improve the learning experience.</p>
+        </div>
+        <div class="ach">
+          <span class="mark">✦</span>
+          <h4>Community Builder — GDG London</h4>
+          <p>Active volunteer and community builder supporting Google Developer Group London events, from I/O Extended to roadshows across the city.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section reveal" id="projects">
+      <div class="section-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+        <div>
+          <div class="eyebrow">Selected work</div>
+          <h2 class="section-title">Projects</h2>
+        </div>
+        <a class="btn btn-ghost" href="https://github.com/Olacode01" target="_blank" rel="noopener">All repos on GitHub ↗</a>
+      </div>
+      <div class="proj-grid">
+        <div class="proj">
+          <div class="cat">AI Voice Agent — Hackathon</div>
+          <h4>VeraMove</h4>
+          <p>An AI voice agent that calls, compares and negotiates moving-service quotes — built with a 4-person team across 4 time zones at Hack-Nation's Global AI Hackathon (5,500+ applicants, 125 countries, MIT Sloan AI Club).</p>
+          <div class="tag-row"><span class="tag">Voice AI</span><span class="tag">Agentic Negotiation</span><span class="tag">Multi-Agent Systems</span></div>
+          <a class="proj-link" href="https://www.linkedin.com/in/toheeb-olagoke/" target="_blank" rel="noopener">Read the story →</a>
+        </div>
+        <div class="proj">
+          <div class="cat">Cloud &amp; DevOps</div>
+          <h4>OLATECH Cloud Automation Suite</h4>
+          <p>End-to-end CI/CD automation for scalable, repeatable deployments.</p>
+          <div class="tag-row"><span class="tag">Docker</span><span class="tag">Terraform</span><span class="tag">GitHub Actions</span><span class="tag">AWS</span></div>
+          <a class="proj-link" href="https://github.com/Olacode01" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+        <div class="proj">
+          <div class="cat">Security</div>
+          <h4>Cyber Secure Monitor</h4>
+          <p>Real-time vulnerability monitoring and security logging tool.</p>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">MongoDB</span></div>
+          <a class="proj-link" href="https://github.com/Olacode01" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+        <div class="proj">
+          <div class="cat">Research</div>
+          <h4>AI &amp; Early-Stage Entrepreneurship</h4>
+          <p>Postgraduate research on AI adoption barriers and the digital skills gap among SMEs.</p>
+          <div class="tag-row"><span class="tag">Applied AI</span><span class="tag">Research</span><span class="tag">OECD Data</span></div>
+          <a class="proj-link" href="https://www.linkedin.com/in/toheeb-olagoke/" target="_blank" rel="noopener">Read more →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PODCAST -->
+    <section class="section reveal" id="podcast">
+      <div class="section-head">
+        <div class="eyebrow">On air</div>
+        <h2 class="section-title">Podcast — CTRL + Chat</h2>
+        <p class="section-sub">Captivating conversations meet cutting-edge technology. Tech talk gets personal, and the future unfolds one episode at a time.</p>
+      </div>
+      <div class="podcast-card">
+        <div class="podcast-art">
+          <span>🎙️</span>
+          <img src="https://i.scdn.co/image/ab67656300005f1fc67bd36207872d80359a3dcd" alt="CTRL + Chat podcast cover art" onerror="this.style.display='none';">
+        </div>
+        <div class="podcast-info">
+          <div class="podcast-title">CTRL + Chat</div>
+          <div class="podcast-meta">Spotify · Technology · ★ 5.0</div>
+          <p class="podcast-desc">Hello, tech aficionados — welcome to "CTRL + Chat," where I sit down with some of the brightest minds in tech for candid conversations on careers, AI, ethics, failure and everything shaping the future of the industry.</p>
+          <div class="podcast-actions">
+            <a class="btn btn-primary" href="https://open.spotify.com/show/6BQDE43eL2KgJ1a6y0eXIb" target="_blank" rel="noopener">Listen on Spotify ↗</a>
+            <a class="btn btn-ghost" href="mailto:olagoketoheeb94@gmail.com?subject=Podcast%20Guest%20Request%20%E2%80%94%20CTRL%20%2B%20Chat&body=Hi%20Toheeb%2C%0A%0AI%27d%20love%20to%20be%20a%20guest%20on%20CTRL%20%2B%20Chat.%0A%0AName%3A%0AWhat%20I%27d%20like%20to%20talk%20about%3A%0ALink%20to%20my%20work%20%2F%20LinkedIn%3A%0A%0AThanks!">Request to be a guest</a>
+          </div>
+        </div>
+      </div>
+      <div class="episode-list">
+        <div class="episode-row">
+          <div>
+            <div class="episode-title">Building a Professional Portfolio in Tech</div>
+            <div class="episode-desc">What should you look out for when creating a portfolio, and why it matters in tech.</div>
+          </div>
+          <a class="episode-meta proj-link" href="https://open.spotify.com/episode/2XS4AymMiDIHHGc87TqMRg" target="_blank" rel="noopener">Apr 2024 · 6 min ↗</a>
+        </div>
+        <div class="episode-row">
+          <div>
+            <div class="episode-title">Career Development for Developers</div>
+            <div class="episode-desc">For junior devs just starting out and seasoned pros looking to level up.</div>
+          </div>
+          <a class="episode-meta proj-link" href="https://open.spotify.com/episode/3A5iAoq3BOPFb1Bpx8JBSv" target="_blank" rel="noopener">Feb 2024 · 6 min ↗</a>
+        </div>
+        <div class="episode-row">
+          <div>
+            <div class="episode-title">The Psychology of Programming</div>
+            <div class="episode-desc">Flow state, focus, and why some developers excel under pressure while others crumble.</div>
+          </div>
+          <a class="episode-meta proj-link" href="https://open.spotify.com/episode/7eCLjeQlNXCf6tT5b6hStp" target="_blank" rel="noopener">Feb 2024 · 4 min ↗</a>
+        </div>
+        <div class="episode-row">
+          <div>
+            <div class="episode-title">Bridging the Gender Gap in Tech!</div>
+            <div class="episode-desc">Awareness, mentorship and inclusive culture as the path to closing the gap.</div>
+          </div>
+          <a class="episode-meta proj-link" href="https://open.spotify.com/episode/1GEY6i19Je9G9jnawSUfBi" target="_blank" rel="noopener">Mar 2024 · 9 min ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WRITING -->
+    <section class="section reveal" id="writing">
+      <div class="section-head">
+        <div class="eyebrow">Thinking out loud</div>
+        <h2 class="section-title">Writing</h2>
+        <p class="section-sub">Articles and write-ups, published out on Dev.to, Medium and Devpost — this is where I'll drop the hook and send you to the full read.</p>
+      </div>
+      <div class="write-grid">
+        <div class="write-card">
+          <span class="tag write-platform">Dev.to · Technical</span>
+          <h3 class="write-hook">"ChatGPT talks. Agents act." — and that difference will decide who keeps their job.</h3>
+          <p class="write-teaser">Breaking down agentic AI for builders tired of prompt-and-pray, with real examples from Klarna's support agent to coding agents that ship while you sleep.</p>
+          <div class="tag-row"><span class="tag">AI Agents</span><span class="tag">LLMs</span><span class="tag">Tutorial</span></div>
+          <a class="proj-link" href="https://dev.to/olacode01" target="_blank" rel="noopener">Read on Dev.to →</a>
+        </div>
+        <div class="write-card">
+          <span class="tag write-platform">Medium · Essay</span>
+          <h3 class="write-hook">Four time zones, one deadline, zero excuses: what shipping VeraMove taught me.</h3>
+          <p class="write-teaser">Lessons on building with strangers across continents, holding an async team together, and finishing when the clock says you shouldn't.</p>
+          <div class="tag-row"><span class="tag">Hackathons</span><span class="tag">Building in Public</span><span class="tag">Lessons</span></div>
+          <a class="proj-link" href="https://medium.com/@olacode01" target="_blank" rel="noopener">Read on Medium →</a>
+        </div>
+        <div class="write-card">
+          <span class="tag write-platform">Devpost · Case Study</span>
+          <h3 class="write-hook">VeraMove: the AI voice agent that negotiates your next move for you.</h3>
+          <p class="write-teaser">The full technical write-up and demo from Hack-Nation's Global AI Hackathon — architecture, the negotiation logic, and what we'd rebuild.</p>
+          <div class="tag-row"><span class="tag">Voice AI</span><span class="tag">Hackathon</span><span class="tag">Case Study</span></div>
+          <a class="proj-link" href="https://devpost.com/software/veramove" target="_blank" rel="noopener">View on Devpost →</a>
+        </div>
+      </div>
+      <p class="write-hint">Placeholders — once you publish, swap each card's headline, tags and link for the real thing. Same idea as the Gallery section: this is a template, not a promise.</p>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section reveal" id="skills">
+      <div class="section-head">
+        <div class="eyebrow">Toolkit</div>
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-cat">
+          <span class="eyebrow">AI, ML &amp; Research</span>
+          <ul class="skill-list">
+            <li>Agentic AI &amp; LLMs <span>Systems</span></li>
+            <li>Voice AI &amp; Conversational Agents <span>Applied</span></li>
+            <li>Prompt Engineering <span>AI/ML</span></li>
+            <li>Applied AI Research <span>Academic</span></li>
+          </ul>
+        </div>
+        <div class="skill-cat">
+          <span class="eyebrow">Cloud &amp; DevOps</span>
+          <ul class="skill-list">
+            <li>Docker &amp; Kubernetes <span>Containers</span></li>
+            <li>AWS <span>Cloud</span></li>
+            <li>Terraform <span>IaC</span></li>
+            <li>GitHub Actions / Jenkins <span>CI/CD</span></li>
+          </ul>
+        </div>
+        <div class="skill-cat">
+          <span class="eyebrow">Languages, Web &amp; Data</span>
+          <ul class="skill-list">
+            <li>Python / Bash / JavaScript <span>Core</span></li>
+            <li>React / Next.js / Tailwind <span>Frontend</span></li>
+            <li>MongoDB / Firebase <span>Data</span></li>
+            <li>Network &amp; Cloud Security <span>OWASP</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>Let's build</span><span class="star">✦</span><span>Olacode</span><span class="star">✦</span><span>Let's build</span><span class="star">✦</span><span>Olacode</span><span class="star">✦</span>
+        <span>Let's build</span><span class="star">✦</span><span>Olacode</span><span class="star">✦</span><span>Let's build</span><span class="star">✦</span><span>Olacode</span><span class="star">✦</span>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <section class="contact-section reveal" id="contact">
+      <div class="eyebrow" style="text-align:center;">Let's talk</div>
+      <h2 class="contact-title">Building, speaking, or hiring? <span class="accent-word">Let's connect.</span></h2>
+      <div class="contact-actions">
+        <a class="btn btn-primary" href="mailto:olagoketoheeb94@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="https://wa.me/447827929230" target="_blank" rel="noopener">WhatsApp ↗</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/toheeb-olagoke/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/Olacode01" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-row">
+        <div class="foot-note">© 2026 Toheeb Olanrewaju Olagoke — England, UK</div>
+        <div class="socials">
+          <a href="https://open.spotify.com/show/6BQDE43eL2KgJ1a6y0eXIb" target="_blank" rel="noopener">Podcast</a>
+          <a href="https://wa.me/447827929230" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="https://github.com/Olacode01" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/toheeb-olagoke/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://twitter.com/olacode01" target="_blank" rel="noopener">X / Twitter</a>
+        </div>
+        <div class="foot-note">Built to keep growing, one post at a time.</div>
+      </div>
+    </footer>
+
+  </div>
+</main>
+
+<!-- TERMINAL -->
+<button class="term-fab" id="openTermFab" aria-label="Open terminal">&gt;_ <span>terminal</span> <kbd>Ctrl K</kbd></button>
+<div class="term-overlay" id="term" role="dialog" aria-modal="true" aria-label="Interactive terminal">
+  <div class="term-win">
+    <div class="term-bar"><i id="termClose" title="Close"></i><i></i><i></i><span>olacode@portfolio: ~</span></div>
+    <div class="term-body" id="termBody"><div id="termOut"></div></div>
+    <div class="term-input-row"><span class="p">guest@olacode:~$</span><input id="termIn" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command input"></div>
+    <div class="term-chips" id="termChips"></div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <div class="lightbox-frame">
+      <button class="lightbox-close" id="lightboxClose">✕</button>
+      <div class="media-placeholder" id="lightboxPlaceholder"><span class="icon">📷</span><span id="lightboxFile"></span></div>
+      <img id="lightboxImg" src="" alt="" onerror="this.style.display='none';">
+    </div>
+    <div class="lightbox-caption"><span class="cap-cat" id="lightboxCat"></span><span id="lightboxTitle"></span></div>
+  </div>
+</div>
+
+<script>
+  // Speaking filter chips (category derived from each post's role badge)
+  (function(){
+    const feed = document.getElementById('speakingFeed');
+    const bar = document.getElementById('speakingFilters');
+    if(!feed || !bar) return;
+    const posts = Array.from(feed.querySelectorAll('.post'));
+    const catOf = (role)=>{
+      const r = role.toLowerCase();
+      if(r.includes('upcoming')) return 'Upcoming';
+      if(r.includes('speaker')) return 'Talks';
+      return 'Community';
+    };
+    posts.forEach(p=>{ p.dataset.cat = catOf(p.querySelector('.post-role').textContent); });
+    const cats = ['All','Talks','Community','Upcoming'].filter(c=> c==='All' || posts.some(p=>p.dataset.cat===c));
+    cats.forEach((c,i)=>{
+      const n = c==='All' ? posts.length : posts.filter(p=>p.dataset.cat===c).length;
+      const b = document.createElement('button');
+      b.className = 'chip' + (i===0 ? ' active' : '');
+      b.innerHTML = c + '<span>' + n + '</span>';
+      b.addEventListener('click', ()=>{
+        bar.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        posts.forEach(p=> p.classList.toggle('hide', c!=='All' && p.dataset.cat!==c));
+      });
+      bar.appendChild(b);
+    });
+  })();
+
+  // Rotating avatar: next look on every refresh, click to cycle
+  (function(){
+    const img = document.getElementById('heroAvatar'); if(!img) return;
+    const N = 6; let i;
+    try{ i = (parseInt(localStorage.getItem('avIdx') || '-1', 10) + 1) % N; localStorage.setItem('avIdx', i); }
+    catch(e){ i = Math.floor(Math.random() * N); }
+    const set = k => { img.style.display = ''; img.src = 'avatars/avatar-' + (k + 1) + '.jpg'; };
+    set(i);
+    img.addEventListener('click', ()=>{ i = (i + 1) % N; try{ localStorage.setItem('avIdx', i); }catch(e){} set(i); });
+  })();
+
+  // Highlight reel carousel
+  (function(){
+    const reel = document.getElementById('reel'); if(!reel) return;
+    // Slides can carry data-from / data-until (YYYY-MM-DD). Outside that window they are removed automatically.
+    const today = new Date().toISOString().slice(0, 10);
+    reel.querySelectorAll('.reel-slide').forEach(s=>{
+      const f = s.dataset.from, u = s.dataset.until;
+      if((f && today < f) || (u && today > u)) s.remove();
+    });
+    const slides = Array.from(reel.querySelectorAll('.reel-slide'));
+    if(!slides.length){ reel.style.display = 'none'; return; }
+    slides.forEach((s, k)=>{ s.classList.remove('s1','s2','s3','s4','s5'); s.classList.add('s' + ((k % 5) + 1)); });
+    slides[0].classList.add('active');
+    const dots = document.getElementById('reelDots'), bar = document.getElementById('reelBar');
+    const DUR = 5500; let cur = 0, timer = null;
+    slides.forEach((_, k)=>{ const b = document.createElement('button'); b.setAttribute('aria-label', 'Slide ' + (k+1)); b.addEventListener('click', ()=> show(k, true)); dots.appendChild(b); });
+    function show(k, manual){
+      cur = (k + slides.length) % slides.length;
+      slides.forEach((s, j)=> s.classList.toggle('active', j === cur));
+      Array.from(dots.children).forEach((d, j)=> d.classList.toggle('on', j === cur));
+      bar.classList.remove('run'); void bar.offsetWidth; bar.classList.add('run');
+      clearTimeout(timer); timer = setTimeout(()=> show(cur + 1), DUR);
+    }
+    bar.style.setProperty('--dur', DUR + 'ms');
+    reel.addEventListener('mouseenter', ()=>{ reel.classList.add('paused'); clearTimeout(timer); });
+    reel.addEventListener('mouseleave', ()=>{ reel.classList.remove('paused'); bar.classList.remove('run'); void bar.offsetWidth; bar.classList.add('run'); timer = setTimeout(()=> show(cur + 1), DUR); });
+    const rt = document.getElementById('reelTerm'); if(rt) rt.addEventListener('click', ()=> document.getElementById('openTermFab').click());
+    show(0);
+  })();
+
+  // Live tech headlines (Hacker News first, Dev.to as backup)
+  (function(){
+    const list = document.getElementById('newsList'), srcEl = document.getElementById('newsSrc'), btn = document.getElementById('newsRefresh');
+    if(!list) return;
+    let items = [], source = '', page = 0;
+    const FALLBACK = [
+      {t:'Hacker News: what tech is talking about today', u:'https://news.ycombinator.com/', s:'news.ycombinator.com'},
+      {t:'Dev.to: top developer posts this week', u:'https://dev.to/top/week', s:'dev.to'},
+      {t:'The Verge: latest in tech', u:'https://www.theverge.com/tech', s:'theverge.com'},
+      {t:'TechCrunch: startups and AI news', u:'https://techcrunch.com/', s:'techcrunch.com'}
+    ];
+    const safe = u => { try{ const x = new URL(u); return (x.protocol === 'https:' || x.protocol === 'http:') ? x.href : null; }catch(e){ return null; } };
+    const host = u => { try{ return new URL(u).hostname.replace(/^www\./, ''); }catch(e){ return ''; } };
+    function render(){
+      list.innerHTML = '';
+      const start = (page * 4) % Math.max(items.length, 4);
+      const slice = items.slice(start, start + 4);
+      (slice.length ? slice : FALLBACK).forEach(it=>{
+        const href = safe(it.u); if(!href) return;
+        const li = document.createElement('li'), box = document.createElement('div'), a = document.createElement('a'), sm = document.createElement('small');
+        a.textContent = it.t; a.href = href; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        sm.textContent = it.s || host(href);
+        box.appendChild(a); box.appendChild(sm); li.appendChild(box); list.appendChild(li);
+      });
+      srcEl.textContent = source || 'curated links';
+    }
+    async function hn(){
+      const ids = await (await fetch('https://hacker-news.firebaseio.com/v0/topstories.json')).json();
+      const rows = await Promise.all(ids.slice(0, 16).map(id => fetch('https://hacker-news.firebaseio.com/v0/item/' + id + '.json').then(r=>r.json()).catch(()=>null)));
+      return rows.filter(r=> r && r.title && r.url).map(r=>({t:r.title, u:r.url, s:host(r.url)}));
+    }
+    async function devto(){
+      const a = await (await fetch('https://dev.to/api/articles?top=7&per_page=12')).json();
+      return a.map(x=>({t:x.title, u:x.url, s:'dev.to'}));
+    }
+    (async function(){
+      try{ items = await hn(); source = 'via Hacker News'; if(items.length < 4) throw 0; }
+      catch(e){ try{ items = await devto(); source = 'via Dev.to'; }catch(e2){ items = []; source = ''; } }
+      render();
+    })();
+    btn.addEventListener('click', ()=>{ page++; render(); });
+  })();
+
+  // Interactive terminal
+  (function(){
+    const term = document.getElementById('term'), out = document.getElementById('termOut'),
+          inp = document.getElementById('termIn'), body = document.getElementById('termBody'),
+          chips = document.getElementById('termChips');
+    const LINKS = {
+      github:'https://github.com/Olacode01', linkedin:'https://www.linkedin.com/in/toheeb-olagoke/',
+      whatsapp:'https://wa.me/447827929230', spotify:'https://open.spotify.com/show/6BQDE43eL2KgJ1a6y0eXIb',
+      x:'https://twitter.com/olacode01', email:'mailto:olagoketoheeb94@gmail.com'
+    };
+    const SECTIONS = ['about','work','speaking','gallery','experience','leadership','projects','podcast','writing','skills','contact'];
+    const history = []; let hIdx = 0;
+
+    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const print = (html, cls) => {
+      const d = document.createElement('div'); d.className = 'term-line' + (cls ? ' ' + cls : ''); d.innerHTML = html;
+      out.appendChild(d); body.scrollTop = body.scrollHeight;
+    };
+    const run = c => '<span class="run" data-run="' + c + '">' + c + '</span>';
+    const go = id => {
+      const t = document.getElementById(id); if(!t) return false;
+      close();
+      setTimeout(()=> window.scrollTo({top: t.getBoundingClientRect().top + window.scrollY - 128, behavior:'smooth'}), 120);
+      return true;
+    };
+    const openLink = u => window.open(u, '_blank', 'noopener');
+
+    const C = {
+      help(){ print('<span class="g">Available commands</span>');
+        [['about','who I am'],['skills','what I work with'],['projects','things I have built'],['speaking','talks &amp; events (incl. Hacktoberfest)'],
+         ['experience','internships &amp; roles'],['leadership','communities &amp; ambassadorships'],['podcast','CTRL + Chat on Spotify'],
+         ['writing','articles'],['contact','get in touch'],['cv','download my CV'],['neofetch','system info, Olacode style'],
+         ['goto &lt;section&gt;','jump to a section of the site'],['open &lt;github|linkedin|whatsapp|spotify|x|email&gt;','open a link'],
+         ['theme &lt;dark|light&gt;','switch theme'],['ls','list sections'],['clear','clear screen'],['exit','close terminal']]
+         .forEach(r=> print('  <span class="y">' + r[0] + ' '.repeat(Math.max(2, 36 - r[0].replace(/&\w+;/g,'x').length)) + '</span><span class="d">' + r[1] + '</span>'));
+        print('<span class="d">Tip: Tab to autocomplete, ↑/↓ for history. There are a few hidden commands too.</span>'); },
+      about(){ print('<span class="g">Toheeb Olanrewaju Olagoke (Olacode)</span>');
+        print('Software &amp; AI Automation Engineer based in England, UK. I build AI agents and cloud automation, speak at tech events, and run developer communities.');
+        print('Founder of OLATECH Solutions, co-founder of Xtructure, host of CTRL + Chat, and a 2026 Ambassador for Thinking About Thinking.'); },
+      whoami(){ print('guest — but I hope you become a recruiter, collaborator or podcast guest.'); },
+      skills(){ print('<span class="g">AI &amp; Research</span>   Agentic AI, LLMs, voice AI, prompt engineering, applied research');
+        print('<span class="g">Cloud &amp; DevOps</span>  Docker, Kubernetes, AWS, Terraform, GitHub Actions, Jenkins');
+        print('<span class="g">Languages &amp; Web</span> Python, Bash, JavaScript, React, Next.js, Tailwind, MongoDB, Firebase');
+        print('<span class="g">Security</span>        Network &amp; cloud security, OWASP, threat analysis'); },
+      projects(){ print('<span class="g">VeraMove</span> — AI voice agent that negotiates moving quotes (Hack-Nation Global AI Hackathon, 5,500+ applicants).');
+        print('<span class="g">OLATECH Cloud Automation Suite</span> — CI/CD with Docker, Terraform, GitHub Actions, AWS.');
+        print('<span class="g">Cyber Secure Monitor</span> — Python/Flask/MongoDB vulnerability monitoring.');
+        print('<span class="g">AI &amp; Early-Stage Entrepreneurship</span> — postgraduate research on SME AI adoption.');
+        print('<span class="d">Run </span>' + run('goto projects') + '<span class="d"> to see the cards, or </span>' + run('open github')); },
+      speaking(){ [['Oct 2026','Hacktoberfest — Hatfield'],['Oct 2026','Hacktoberfest — Luton'],['May 2026','Acadademy Tech Cohort: AI Agents &amp; Agentic Frameworks'],
+        ['2026','Hertfordshire PG Research Symposium: AI &amp; early-stage entrepreneurs'],['2026','Build with AI x Hack Day: From Beginner to Builder'],
+        ['2026','Build with AI &amp; IWD, Imperial College London (volunteer)'],['2026','Google I/O Extended, GDG London']]
+        .forEach(r=> print('<span class="m">' + r[0].padEnd(9) + '</span> ' + r[1])); print('<span class="d">Full feed: </span>' + run('goto speaking')); },
+      experience(){ print('<span class="g">AI Intern</span> — Decode Lab (2026)');
+        print('<span class="g">Python Developer Intern</span> — Redynox (2026, 4 weeks, Letter of Recommendation)');
+        print('<span class="g">Founder</span> — OLATECH Solutions (2026–present)'); },
+      leadership(){ print('Co-Founder, Xtructure · 2026 Ambassador, Thinking About Thinking · Aspire Leaders Program graduate');
+        print('Student Representative, School of Business, University of Hertfordshire · Community Builder, GDG London'); },
+      podcast(){ print('<span class="g">CTRL + Chat</span> — tech conversations with the brightest minds in tech.');
+        print('Listen: ' + run('open spotify') + '   Be a guest: ' + run('open email')); },
+      writing(){ print('Articles are coming to Dev.to, Medium and Devpost. See ' + run('goto writing') + '.'); },
+      contact(){ print('Email    <a href="mailto:olagoketoheeb94@gmail.com">olagoketoheeb94@gmail.com</a>');
+        print('WhatsApp +44 7827 929230 (' + run('open whatsapp') + ')');
+        print('LinkedIn ' + run('open linkedin') + '   GitHub ' + run('open github') + '   X ' + run('open x')); },
+      cv(){ print('Downloading CV…'); const a = document.createElement('a'); a.href='Olacode_CV.pdf'; a.download='Toheeb_Olagoke_CV.pdf'; document.body.appendChild(a); a.click(); a.remove(); },
+      neofetch(){ print('<span class="g">guest</span>@<span class="g">olacode</span>'); print('<span class="d">-------------------</span>');
+        [['Role','Software &amp; AI Automation Engineer'],['Location','England, UK'],['Host','OLATECH Solutions'],['Community','Xtructure (co-founder)'],
+         ['Podcast','CTRL + Chat'],['Stack','Python, Docker, Terraform, AWS, LLM agents'],['Shell','curiosity 5.0'],['2026 events','8+ talks, hacks &amp; meetups']]
+         .forEach(r=> print('<span class="g">' + r[0].padEnd(12) + '</span>' + r[1])); },
+      ls(){ print(SECTIONS.map(s=> run('goto ' + s)).join('  ')); },
+      clear(){ out.innerHTML = ''; },
+      exit(){ close(); },
+      date(){ print(new Date().toString()); },
+      echo(a){ print(esc(a.join(' '))); },
+      history(){ history.forEach((h,i)=> print('<span class="d">' + String(i+1).padStart(3) + '</span>  ' + esc(h))); },
+      theme(a){ const t = (a[0]||'').toLowerCase();
+        if(t!=='dark' && t!=='light'){ print('usage: theme &lt;dark|light&gt;'); return; }
+        document.documentElement.setAttribute('data-theme', t); try{ localStorage.setItem('theme', t); }catch(e){}
+        print('Theme set to <span class="g">' + t + '</span>.'); },
+      goto(a){ const s = (a[0]||'').toLowerCase(); if(!SECTIONS.includes(s)){ print('usage: goto &lt;' + SECTIONS.join('|') + '&gt;'); return; } print('Jumping to ' + s + '…'); go(s); },
+      open(a){ const k = (a[0]||'').toLowerCase(); if(!LINKS[k]){ print('usage: open &lt;' + Object.keys(LINKS).join('|') + '&gt;'); return; } print('Opening ' + k + '…'); openLink(LINKS[k]); },
+      sudo(a){ if(a.join(' ').toLowerCase().includes('hire')){
+          print('[sudo] password for recruiter: ********'); print('<span class="g">Permission granted.</span> Great decision. Opening email…'); setTimeout(()=> openLink(LINKS.email), 700);
+        } else print('guest is not in the sudoers file. This incident will be reported.'); },
+      rm(){ print('<span class="m">Nice try.</span> This portfolio is read-only.'); },
+      coffee(){ print('☕ Brewing… Done. Productivity +42%.'); },
+      chess(){ print('1. e4 — your move. (I play the Sicilian.)'); },
+      joke(){ print('There are 10 kinds of people: those who understand binary and those who don\'t.'); }
+    };
+
+    function exec(raw){
+      const line = raw.trim(); if(!line) return;
+      history.push(line); hIdx = history.length;
+      const d = document.createElement('div'); d.className = 'term-line cmd';
+      d.innerHTML = '<span class="p">guest@olacode:~$</span> '; d.appendChild(document.createTextNode(line)); out.appendChild(d);
+      const parts = line.split(/\s+/), name = parts[0].toLowerCase(), args = parts.slice(1);
+      if(C[name]) C[name](args);
+      else print('command not found: <span class="m">' + esc(name) + '</span>. Type ' + run('help') + ' for a list.');
+      body.scrollTop = body.scrollHeight;
+    }
+
+    function boot(){
+      print('<span class="g">Olacode OS v1.0</span> <span class="d">— portfolio shell</span>');
+      print('Welcome. Type ' + run('help') + ' to see commands, or tap one below.');
+      print('');
+    }
+    function open(){ term.classList.add('open'); if(!out.childElementCount) boot(); setTimeout(()=> inp.focus(), 60); }
+    function close(){ term.classList.remove('open'); }
+
+    ['help','about','projects','speaking','podcast','cv','contact','neofetch'].forEach(c=>{
+      const b = document.createElement('button'); b.textContent = c; b.addEventListener('click', ()=>{ exec(c); inp.focus(); }); chips.appendChild(b);
+    });
+    out.addEventListener('click', e=>{ const r = e.target.closest('[data-run]'); if(r){ exec(r.dataset.run); inp.focus(); } });
+    inp.addEventListener('keydown', e=>{
+      if(e.key === 'Enter'){ exec(inp.value); inp.value = ''; }
+      else if(e.key === 'ArrowUp'){ e.preventDefault(); if(hIdx > 0){ hIdx--; inp.value = history[hIdx]; } }
+      else if(e.key === 'ArrowDown'){ e.preventDefault(); if(hIdx < history.length - 1){ hIdx++; inp.value = history[hIdx]; } else { hIdx = history.length; inp.value = ''; } }
+      else if(e.key === 'Tab'){ e.preventDefault(); const v = inp.value.toLowerCase(); if(!v) return;
+        const m = Object.keys(C).filter(k=> k.startsWith(v));
+        if(m.length === 1) inp.value = m[0] + ' '; else if(m.length > 1) print('<span class="d">' + m.join('  ') + '</span>'); }
+      else if(e.key === 'l' && e.ctrlKey){ e.preventDefault(); C.clear(); }
+    });
+    document.getElementById('openTermFab').addEventListener('click', open);
+    document.getElementById('openTermNav').addEventListener('click', open);
+    document.getElementById('termClose').addEventListener('click', close);
+    term.addEventListener('click', e=>{ if(e.target === term) close(); });
+    document.addEventListener('keydown', e=>{
+      if((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k'){ e.preventDefault(); term.classList.contains('open') ? close() : open(); }
+      else if(e.key === 'Escape' && term.classList.contains('open')) close();
+    });
+  })();
+
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', ()=>{
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+  });
+
+  // Scroll reveal
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.1});
+  items.forEach(i=>io.observe(i));
+
+  // Smooth anchor scroll (account for sticky header + tab bar)
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', function(e){
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        e.preventDefault();
+        const offset = 128;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({top, behavior:'smooth'});
+      }
+    });
+  });
+
+  // Scroll progress bar
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+  }
+  document.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+
+  // Active tab highlighting
+  const tabLinks = document.querySelectorAll('.tab-list a');
+  const tabSections = Array.from(tabLinks).map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const tabObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      const id = '#' + entry.target.id;
+      const link = document.querySelector('.tab-list a[href="'+id+'"]');
+      if(!link) return;
+      if(entry.isIntersecting){
+        tabLinks.forEach(l=>l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+  tabSections.forEach(s=>tabObserver.observe(s));
+
+  // Gallery + post-media lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbCat = document.getElementById('lightboxCat');
+  const lbTitle = document.getElementById('lightboxTitle');
+  const lbFile = document.getElementById('lightboxFile');
+  document.querySelectorAll('.gallery-item, .post-media').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      const img = item.getAttribute('data-img');
+      lbImg.src = img; lbImg.style.display = 'block';
+      lbFile.textContent = img.split('/').pop();
+      lbCat.textContent = item.getAttribute('data-cat') || '';
+      lbTitle.textContent = item.getAttribute('data-title') || '';
+      lightbox.classList.add('open');
+    });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', ()=> lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', (e)=>{ if(e.target === lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') lightbox.classList.remove('open'); });
+</script>
+
+</body>
+</html>
