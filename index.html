@@ -23,7 +23,7 @@
   (function(){
     try{
       var saved = localStorage.getItem('theme');
-      var theme = saved || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var theme = saved || 'light'; /* default light; visitor's toggle choice is remembered */
       document.documentElement.setAttribute('data-theme', theme);
     }catch(e){}
   })();
@@ -1002,32 +1002,32 @@
       <div class="section-head">
         <div class="eyebrow">Thinking out loud</div>
         <h2 class="section-title">Writing</h2>
-        <p class="section-sub">Articles and write-ups, published out on Dev.to, Medium and Devpost — this is where I'll drop the hook and send you to the full read.</p>
+        <p class="section-sub">Articles on AI agents, hackathons and community building, published on Dev.to.</p>
       </div>
       <div class="write-grid">
         <div class="write-card">
-          <span class="tag write-platform">Dev.to · Technical</span>
-          <h3 class="write-hook">"ChatGPT talks. Agents act." — and that difference will decide who keeps their job.</h3>
-          <p class="write-teaser">Breaking down agentic AI for builders tired of prompt-and-pray, with real examples from Klarna's support agent to coding agents that ship while you sleep.</p>
-          <div class="tag-row"><span class="tag">AI Agents</span><span class="tag">LLMs</span><span class="tag">Tutorial</span></div>
-          <a class="proj-link" href="https://dev.to/olacode01" target="_blank" rel="noopener">Read on Dev.to →</a>
+          <span class="tag write-platform">Dev.to · Article</span>
+          <h3 class="write-hook">Start Small, Ship Something: What Two Hack Days Taught Me About Building a Community</h3>
+          <p class="write-teaser">What running two Hacktoberfest Hack Days with Major League Hacking taught me about building a community.</p>
+          <div class="tag-row"><span class="tag">Hacktoberfest</span><span class="tag">Open Source</span><span class="tag">Community</span></div>
+          <a class="proj-link" href="https://dev.to/olacode/start-small-ship-something-what-two-hack-days-taught-me-about-building-a-community-5ae9" target="_blank" rel="noopener">Read on Dev.to →</a>
         </div>
         <div class="write-card">
-          <span class="tag write-platform">Medium · Essay</span>
-          <h3 class="write-hook">Four time zones, one deadline, zero excuses: what shipping VeraMove taught me.</h3>
-          <p class="write-teaser">Lessons on building with strangers across continents, holding an async team together, and finishing when the clock says you shouldn't.</p>
-          <div class="tag-row"><span class="tag">Hackathons</span><span class="tag">Building in Public</span><span class="tag">Lessons</span></div>
-          <a class="proj-link" href="https://medium.com/@olacode01" target="_blank" rel="noopener">Read on Medium →</a>
+          <span class="tag write-platform">Dev.to · Article</span>
+          <h3 class="write-hook">Escalation Room: I turned three AI agents into a support team in Telegram with Switch</h3>
+          <p class="write-teaser">Three AI agents working as a customer support team inside Telegram, built with Switch.</p>
+          <div class="tag-row"><span class="tag">AI</span><span class="tag">Agents</span><span class="tag">Claude Code</span></div>
+          <a class="proj-link" href="https://dev.to/olacode/escalation-room-i-turned-three-ai-agents-into-a-support-team-in-telegram-with-switch-3524" target="_blank" rel="noopener">Read on Dev.to →</a>
         </div>
         <div class="write-card">
-          <span class="tag write-platform">Devpost · Case Study</span>
-          <h3 class="write-hook">VeraMove: the AI voice agent that negotiates your next move for you.</h3>
-          <p class="write-teaser">The full technical write-up and demo from Hack-Nation's Global AI Hackathon — architecture, the negotiation logic, and what we'd rebuild.</p>
-          <div class="tag-row"><span class="tag">Voice AI</span><span class="tag">Hackathon</span><span class="tag">Case Study</span></div>
-          <a class="proj-link" href="https://devpost.com/software/veramove" target="_blank" rel="noopener">View on Devpost →</a>
+          <span class="tag write-platform">Dev.to · Article</span>
+          <h3 class="write-hook">Building VeraMove: An AI That Calls Three Movers, Catches Hidden Fees, and Negotiates a Better Deal.</h3>
+          <p class="write-teaser">How we built an AI voice agent that calls movers, catches hidden fees and negotiates a better quote.</p>
+          <div class="tag-row"><span class="tag">AI</span><span class="tag">Voice Agents</span><span class="tag">Hackathon</span></div>
+          <a class="proj-link" href="https://dev.to/olacode/building-veramove-an-ai-that-calls-three-movers-catches-hidden-fees-and-negotiates-a-better-deal-lm7" target="_blank" rel="noopener">Read on Dev.to →</a>
         </div>
       </div>
-      <p class="write-hint">Placeholders — once you publish, swap each card's headline, tags and link for the real thing. Same idea as the Gallery section: this is a template, not a promise.</p>
+      <p class="write-hint"><a class="proj-link" href="https://dev.to/olacode" target="_blank" rel="noopener">All articles on Dev.to →</a></p>
     </section>
 
     <!-- SKILLS -->
@@ -1300,7 +1300,7 @@
         print('Student Representative, School of Business, University of Hertfordshire · Community Builder, GDG London'); },
       podcast(){ print('<span class="g">CTRL + Chat</span> — tech conversations with the brightest minds in tech.');
         print('Listen: ' + run('open spotify') + '   Be a guest: ' + run('open email')); },
-      writing(){ print('Articles are coming to Dev.to, Medium and Devpost. See ' + run('goto writing') + '.'); },
+      writing(){ print('Articles on AI agents, hackathons and community, published on Dev.to. See ' + run('goto writing') + '.'); },
       contact(){ print('Email    <a href="mailto:hello@olacode.dev">hello@olacode.dev</a>');
         print('WhatsApp +44 7827 929230 (' + run('open whatsapp') + ')');
         print('LinkedIn ' + run('open linkedin') + '   GitHub ' + run('open github') + '   X ' + run('open x')); },
